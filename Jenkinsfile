@@ -17,7 +17,8 @@ pipeline {
     
 			script{
 				def int intval = "${BN}"
-				for (i in 1..intval) {
+				def newintval = intal - 1
+				for (i in 1..newintval) {
 				// add your child job below which has to be triggered and pass the parameters	
 				build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}")]
 				}                                                                                            
