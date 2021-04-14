@@ -25,14 +25,16 @@ pipeline {
 				def int intval = sh(script: "curl -u $JFROG_ID -s $url_new | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' |sed 's+'https:jfrgfreetst.jfrog.ioartifactoryapistorageexample-repo-local'++g' | sed 's+'Mypath2'++' | sort -u -r | head -c -1 |wc -l",returnStdout: true).trim()
 				echo "$intval"
 				//def newintval = intval - 1
-				for (i in 1..intval) {
+				for (i in 1..4) {
 				// add your child job below which has to be triggered and pass the parameters	
 					//xz = "${i}"
 					def folder_path = curlmethod(url,JFROG_ID,i)
 					def Path = "${url}/${folder_path}/?sort"
+					def SN = curlmethod(url_new,JFROG_ID,i)
+					def RL = curlmethodnew(Path, JFROG_ID)
 				build job: "env_test_myjenk", wait: false, parameters: [
-				string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
-				string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID))
+					string(name: 'SERVICE_NAME', value : "${SN}"),
+					string(name: 'RELEASE_LABEL', value : "${RL}" )
 				  ]
 				
 				}                                                                                            
