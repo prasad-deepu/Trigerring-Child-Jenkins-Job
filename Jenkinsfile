@@ -21,7 +21,7 @@ pipeline {
 				for (i in 1..intval) {
 				// add your child job below which has to be triggered and pass the parameters	
 				//build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}")]
-				build job: "env_test_myjenk", wait: false, parameters: [$class: 'StringParameterValue', name: 'buildnum', value: "${i}")]
+				build job: "env_test_myjenk", wait: false, parameters: [$class: 'StringParameterValue', name: 'buildnum', value: "${i}"]
 				}                                                                                            
 			}
 		 }
