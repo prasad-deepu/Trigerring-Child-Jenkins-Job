@@ -51,7 +51,7 @@ def  buildnumber1(String JFROG_ID) {
 
 }
 
-def curlmethod(String url, String JFROG_ID,String bn ) {
+def curlmethod(String url, String JFROG_ID,int bn ) {
 
  String lt
     if(bn > 1){
