@@ -9,9 +9,9 @@ pipeline {
          JFROG_ID = credentials('jfrogid')
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local"
 	   url_new = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
-    //folder_path = curlmethod(url,JFROG_ID,buildnum)
+    //folder_path = curlmethod(url,JFROG_ID,BN)
     //Path = "${url}/${folder_path}/?sort"
-   //image_name = curlmethodnew(Path, JFROG_ID)
+   image_name = curlmethodnew(Path, JFROG_ID)
       
       }
     
@@ -25,15 +25,17 @@ pipeline {
 				def int intval = "${BN}"
 				echo "$intval"
 				//def newintval = intval - 1
-				//for (i in 1..intval) {
+				for (i in 1..intval) {
 				// add your child job below which has to be triggered and pass the parameters	
 					//xz = "${i}"
-				//build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}"),
-				//string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
-				//string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID))
-				  //]
+					def folder_path = curlmethod(url,JFROG_ID,i)
+					def Path = "${url}/${folder_path}/?sort"
+				build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}"),
+				string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
+				string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID))
+				  ]
 				
-				//}                                                                                            
+				}                                                                                            
 			}
 		 }
          
