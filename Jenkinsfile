@@ -22,6 +22,7 @@ pipeline {
     
 			script{
 				def int intval = "${BN}"
+				echo "$intval"
 				def newintval = intval - 1
 				for (i in 1..intval) {
 				// add your child job below which has to be triggered and pass the parameters	
