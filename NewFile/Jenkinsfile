@@ -41,7 +41,7 @@ pipeline {
 
 def  buildnumber1(String JFROG_ID) {
   String url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
-  int Bnumber = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' |sed 's+'https:jfrgfreetst.jfrog.ioartifactoryapistorageexample-repo-local'++g' | sed 's+'Mypath2'++' |head -c -2 |wc -l",returnStdout: true).trim()
+  int Bnumber = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' |sed 's+'https:jfrgfreetst.jfrog.ioartifactoryapistorageexample-repo-local'++g' | sed 's+'Mypath2'++' | sort -u -r | head -c -1 |wc -l",returnStdout: true).trim()
   return Bnumber
 
 }
