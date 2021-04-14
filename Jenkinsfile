@@ -30,7 +30,7 @@ pipeline {
 					//xz = "${i}"
 					def folder_path = curlmethod(url,JFROG_ID,i)
 					def Path = "${url}/${folder_path}/?sort"
-				build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}"),
+				build job: "env_test_myjenk", wait: false, parameters: [
 				string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
 				string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID))
 				  ]
