@@ -4,7 +4,7 @@
 pipeline {
    agent any
    environment {
-        BN =  '4'
+      int BN =  '4'
 		//buildnumber1(JFROG_ID)
          JFROG_ID = credentials('jfrogid')
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local"
