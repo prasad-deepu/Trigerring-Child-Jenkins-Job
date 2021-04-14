@@ -9,9 +9,9 @@ pipeline {
          JFROG_ID = credentials('jfrogid')
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local"
 	   url_new = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
-    folder_path = curlmethod(url,JFROG_ID,buildnum)
-    Path = "${url}/${folder_path}/?sort"
-   image_name = curlmethodnew(Path, JFROG_ID)
+    //folder_path = curlmethod(url,JFROG_ID,buildnum)
+    //Path = "${url}/${folder_path}/?sort"
+   //image_name = curlmethodnew(Path, JFROG_ID)
       
       }
     
