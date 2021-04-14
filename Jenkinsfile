@@ -29,8 +29,8 @@ pipeline {
 				// add your child job below which has to be triggered and pass the parameters	
 					//xz = "${i}"
 					
-					build job: "env_test_myjenk", wait: false, parameters: [[ string(name: 'buildnum', value: "${i}")],[string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)) ], 
-												[string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID) )]]
+					build job: "env_test_myjenk", wait: false, parameters: [ string(name: 'buildnum', value: "${i}"),string(name: 'SERVICE_NAME', value : "Renuka") , 
+												string(name: 'RELEASE_LABEL', value : "Prasad" )]
 					//string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)) ], [,
 					//string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID) )
 				  //]
