@@ -7,6 +7,7 @@ pipeline {
         int BN =  buildnumber1(JFROG_ID)
          JFROG_ID = credentials('jfrogid')
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local"
+	   url_new = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
     folder_path = curlmethod(url,JFROG_ID,buildnum)
     Path = "${url}/${folder_path}/?sort"
    image_name = curlmethodnew(Path, JFROG_ID)
@@ -26,7 +27,7 @@ pipeline {
 				// add your child job below which has to be triggered and pass the parameters	
 					xz = "${i}"
 				build job: "env_test_myjenk", wait: false, parameters: [string(name: 'buildnum', value: "${i}"),
-				string(name: 'SERVICE_NAME', value : curlmethod(url,JFROG_ID,i)),
+				string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
 				string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID))
 				  ]
 				
