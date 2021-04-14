@@ -33,8 +33,8 @@ pipeline {
 					def SN = curlmethod(url_new,JFROG_ID,i)
 					def RL = curlmethodnew(Path, JFROG_ID)
 				build job: "env_test_myjenk", wait: false, parameters: [
-					string(name: 'SERVICE_NAME', value : "${SN}"),
-					string(name: 'RELEASE_LABEL', value : "${RL}" )
+					string(name: 'SERVICE_NAME', value : 'SN'),
+					string(name: 'RELEASE_LABEL', value : 'RL' )
 				  ]
 				
 				}                                                                                            
