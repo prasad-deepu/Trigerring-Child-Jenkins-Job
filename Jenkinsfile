@@ -28,13 +28,10 @@ pipeline {
 				for (i in 1..4) {
 				// add your child job below which has to be triggered and pass the parameters	
 					//xz = "${i}"
-					def folder_path = curlmethod(url,JFROG_ID,i)
-					def Path = "${url}/${folder_path}/?sort"
-					def SN = curlmethod(url_new,JFROG_ID,i)
-					def RL = curlmethodnew(Path, JFROG_ID)
+					
 				build job: "env_test_myjenk", wait: false, parameters: [
-					string(name: 'SERVICE_NAME', value : 'SN'),
-					string(name: 'RELEASE_LABEL', value : 'RL' )
+					string(name: 'SERVICE_NAME', value : curlmethod(url_new,JFROG_ID,i)),
+					string(name: 'RELEASE_LABEL', value : curlmethodnew(Path, JFROG_ID) )
 				  ]
 				
 				}                                                                                            
