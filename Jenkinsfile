@@ -22,7 +22,7 @@ pipeline {
 		 
     
 			script{
-				def int intval = "${BN}"
+				def int intval = sh(script: "curl -u $JFROG_ID -s $url_new | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' |sed 's+'https:jfrgfreetst.jfrog.ioartifactoryapistorageexample-repo-local'++g' | sed 's+'Mypath2'++' | sort -u -r | head -c -1 |wc -l",returnStdout: true).trim()
 				echo "$intval"
 				//def newintval = intval - 1
 				for (i in 1..intval) {
